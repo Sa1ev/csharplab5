@@ -74,6 +74,53 @@ namespace lab5client
         {
             messageTextBox.Text = "";
         }
+
+        public void setupWindow()
+        {
+            comboBox1.Items.Add("Общий");
+            comboBox1.SelectedIndex = 0;
+            messageTextBox.Visible = true;
+            button2.Visible = false;
+            outputRichBox.Visible = true;
+            button1.Visible = true;
+            nameTextBox.Visible = false;
+            comboBox1.Visible = true;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public delegate void delFillCombo(String values);
+
+        public void fillCombo(String values)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new delFillCombo(fillCombo), values);
+            }
+            else
+            {
+                String[] arr = values.Substring(9).Split('人');
+                comboBox1.Items.Clear();
+                comboBox1.Items.Add("Общий");
+                comboBox1.SelectedIndex = 0;
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    if (arr[i].Split('\n')[0] != nameTextBox.Text)
+                    {
+                        comboBox1.Items.Add(arr[i]);
+                    }
+                    
+                }
+            }
+        }
         
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Logic.Disconnect();
+        }
     }
 }

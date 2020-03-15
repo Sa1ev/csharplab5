@@ -12,7 +12,7 @@ namespace lab5server
     {
         protected internal string Id { get; private set; }
         protected internal NetworkStream Stream { get; private set; }
-        string userName;
+        public string userName;
         TcpClient client;
         ServerObject server; // объект сервера
 
@@ -33,17 +33,25 @@ namespace lab5server
                 string message = GetMessage();
                 userName = message;
 
-                message = userName + " вошел в чат. Ip:"+ ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString();
+                message = userName + " вошел в чат. Ip:"+ getIp();
                 // посылаем сообщение о входе в чат всем подключенным пользователям
                 server.BroadcastMessage(message, this.Id);
-                Console.WriteLine(message);
+                server.sendUserList();
+               
+                    Console.WriteLine(message);
                 // в бесконечном цикле получаем сообщения от клиента
                 while (true)
                 {
                     try
                     {
                         message = GetMessage();
-                        if (message != "")
+                        
+                        if (message== "\\disconnect")
+                        {
+                            server.RemoveConnection(Id);
+                            throw new Exception();
+                        }
+                        else if (message != "")
                         {
                             message = String.Format("{0} отправил: {1}", userName, message);
                             Console.WriteLine(message);
@@ -96,6 +104,11 @@ namespace lab5server
                 Stream.Close();
             if (client != null)
                 client.Close();
+        }
+
+        public String getIp()
+        {
+            return ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString();
         }
     }
 }

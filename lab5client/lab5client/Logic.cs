@@ -33,6 +33,8 @@ namespace lab5client
                     // запускаем новый поток для получения данных
                     Thread receiveThread = new Thread(new ThreadStart(ReceiveMessage));
                     receiveThread.Start(); //старт потока
+                    form.richAddText("Вы подключены к серверу\n");
+                    form.setupWindow();
                 }
                 catch (Exception ex)
                 {
@@ -46,7 +48,7 @@ namespace lab5client
         }
         public static void SendMessage()
         {
-           
+
             if (stream == null)
             {
                 return;
@@ -77,11 +79,16 @@ namespace lab5client
                         builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
                     }
                     while (stream.DataAvailable);
-
                     string message = builder.ToString();
-                    form.richAddText(message + "\n");
-                        //Console.WriteLine(message + "\n");
-                        //output.AppendText(message + "\n");//вывод сообщения
+                    if (isMessageConnectionList(message))
+                    {
+                        form.fillCombo(message);
+                    }
+                    else
+                    {
+                        form.richAddText(message + "\n");
+                    }
+                    
                     
                     
                 }
@@ -97,10 +104,25 @@ namespace lab5client
 
         public static void Disconnect()
         {
+
             if (stream != null)
+            {
+                if (client.Connected){
+                    byte[] data = Encoding.Unicode.GetBytes("\\disconnect");
+                    stream.Write(data, 0, data.Length);
+                }
+                
                 stream.Close();//отключение потока
+            }
+               
             if (client != null)
                 client.Close();//отключение клиента
+        }
+
+        private static bool isMessageConnectionList(String text)
+        {
+            bool d= text.Substring(0, 9) == "userlist人";
+            return d;
         }
     }
 }
