@@ -87,6 +87,19 @@ namespace lab5client
             comboBox1.Visible = true;
         }
 
+        public void defaultWindow()
+        {
+            comboBox1.Items.Add("Общий");
+            comboBox1.SelectedIndex = 0;
+            messageTextBox.Visible = false;
+            outputRichBox.Clear();
+            button2.Visible = true;
+            outputRichBox.Visible = false;
+            button1.Visible = false;
+            nameTextBox.Visible = true;
+            comboBox1.Visible = false;
+        }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -102,7 +115,7 @@ namespace lab5client
             }
             else
             {
-                String[] arr = values.Substring(9).Split('人');
+                String[] arr = values.Substring(9).Split(Logic.splitChar);
                 comboBox1.Items.Clear();
                 comboBox1.Items.Add("Общий");
                 comboBox1.SelectedIndex = 0;
@@ -121,6 +134,12 @@ namespace lab5client
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Logic.Disconnect();
+        }
+
+        public String getComboValue()
+        {
+            String cText = this.comboBox1.GetItemText(this.comboBox1.SelectedItem);
+            return cText.Split('\n')[0];
         }
     }
 }

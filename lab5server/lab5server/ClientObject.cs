@@ -46,16 +46,23 @@ namespace lab5server
                     {
                         message = GetMessage();
                         
-                        if (message== "\\disconnect")
+                        if (message== "\\quit")
                         {
                             server.RemoveConnection(Id);
                             throw new Exception();
                         }
-                        else if (message != "")
+                        String[] splt = message.Split(ServerObject.splitChar);
+                        if (splt[0]=="Общий") 
                         {
-                            message = String.Format("{0} отправил: {1}", userName, message);
+                            message = String.Format("{0} отправил: {1}", userName, splt[1]);
                             Console.WriteLine(message);
                             server.BroadcastMessage(message, this.Id);
+                        }
+                        else if (splt[0] != "")
+                        {
+                            message = String.Format("{0} отправил {1} личное сообщение: {2}", userName, splt[0], splt[1]);
+                            Console.WriteLine(message);
+                            server.PrivateMessage(splt[1], splt[0]);
                         }
                         
                         

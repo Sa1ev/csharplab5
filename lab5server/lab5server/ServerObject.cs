@@ -13,7 +13,7 @@ namespace lab5server
     {
         static TcpListener tcpListener; // сервер для прослушивания
         List<ClientObject> clients = new List<ClientObject>(); // все подключения
-
+        public static Char splitChar = '人';
         protected internal void AddConnection(ClientObject clientObject)
         {
             clients.Add(clientObject);
@@ -69,7 +69,7 @@ namespace lab5server
             String list = "userlist";
             for (int i = 0; i < clients.Count; i++)
             {
-                list += "人"+clients[i].userName+"\n "+ clients[i].getIp(); //передача данных
+                list += splitChar + clients[i].userName+"\n "+ clients[i].getIp(); //передача данных
             }
             byte[] data = Encoding.Unicode.GetBytes(list);
             for (int i = 0; i < clients.Count; i++)
@@ -78,12 +78,12 @@ namespace lab5server
                 
             }
         }
-        protected internal void PrivateMessage(string message, string id)
+        protected internal void PrivateMessage(string message, string name)
         {
             byte[] data = Encoding.Unicode.GetBytes(message);
             for (int i = 0; i < clients.Count; i++)
             {
-                if (clients[i].Id != id) // если id клиента не равно id отправляющего
+                if (clients[i].userName == name) // если id клиента не равно id отправляющего
                 {
                     clients[i].Stream.Write(data, 0, data.Length); //передача данных
                 }

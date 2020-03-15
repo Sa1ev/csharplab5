@@ -17,7 +17,7 @@ namespace lab5client
         static TcpClient client;
         static NetworkStream stream;
         static Form1 form;
-
+        public static Char splitChar = '人';
         public static void startClient(String userName, Form1 form)
         {
             {
@@ -55,12 +55,21 @@ namespace lab5client
             }
             while (true)
             {
-                if (form.getMessage() == ""){
+
+                if (client.Connected & form.getMessage() != "")
+                {
+                    byte[] data = Encoding.Unicode.GetBytes(form.getComboValue()+ splitChar + form.getMessage());
+                    Console.WriteLine(form.getComboValue());
+                    form.clearMessage();
+                    stream.Write(data, 0, data.Length);
+                }
+                else if (form.getMessage() == "")
+                {
                     return;
                 }
-                byte[] data = Encoding.Unicode.GetBytes(form.getMessage());
-                form.clearMessage();
-                stream.Write(data, 0, data.Length);
+            
+
+               
             }
         }
 
@@ -121,7 +130,7 @@ namespace lab5client
 
         private static bool isMessageConnectionList(String text)
         {
-            bool d= text.Substring(0, 9) == "userlist人";
+            bool d= text.Substring(0, 9) == "userlist"+ splitChar;
             return d;
         }
     }
