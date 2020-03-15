@@ -45,10 +45,12 @@ namespace lab5server
                         message = GetMessage();
                         if (message != "")
                         {
-                            Console.WriteLine(String.Format("{0}: {1}", userName, message));
+                            message = String.Format("{0} отправил: {1}", userName, message);
+                            Console.WriteLine(message);
+                            server.BroadcastMessage(message, this.Id);
                         }
                         
-                        server.BroadcastMessage(message, this.Id);
+                        
                     }
                     catch
                     {

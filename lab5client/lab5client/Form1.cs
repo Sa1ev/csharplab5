@@ -27,7 +27,12 @@ namespace lab5client
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Logic.SendMessage();
+            if (messageTextBox.Text != "")
+            {
+                outputRichBox.AppendText("Вы отправили: "+messageTextBox.Text+"\n");
+                Logic.SendMessage();
+            }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
