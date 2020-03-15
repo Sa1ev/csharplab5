@@ -33,13 +33,13 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.outputRichBox = new System.Windows.Forms.RichTextBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(404, 415);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(404, 397);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(91, 23);
             this.button1.TabIndex = 0;
@@ -50,7 +50,9 @@
             // 
             // messageTextBox
             // 
-            this.messageTextBox.Location = new System.Drawing.Point(6, 417);
+            this.messageTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.messageTextBox.Location = new System.Drawing.Point(6, 400);
             this.messageTextBox.Name = "messageTextBox";
             this.messageTextBox.Size = new System.Drawing.Size(379, 20);
             this.messageTextBox.TabIndex = 1;
@@ -59,13 +61,18 @@
             // 
             // nameTextBox
             // 
+            this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.nameTextBox.Location = new System.Drawing.Point(6, 12);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(379, 20);
+            this.nameTextBox.Size = new System.Drawing.Size(240, 20);
             this.nameTextBox.TabIndex = 5;
+            this.nameTextBox.Enter += new System.EventHandler(this.nameTextBox_Enter);
+            this.nameTextBox.Leave += new System.EventHandler(this.nameTextBox_Leave);
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location = new System.Drawing.Point(404, 10);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(91, 23);
@@ -76,9 +83,13 @@
             // 
             // outputRichBox
             // 
-            this.outputRichBox.Location = new System.Drawing.Point(6, 52);
+            this.outputRichBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.outputRichBox.Location = new System.Drawing.Point(6, 39);
             this.outputRichBox.Name = "outputRichBox";
-            this.outputRichBox.Size = new System.Drawing.Size(489, 346);
+            this.outputRichBox.ReadOnly = true;
+            this.outputRichBox.Size = new System.Drawing.Size(489, 352);
             this.outputRichBox.TabIndex = 6;
             this.outputRichBox.Text = "";
             this.outputRichBox.Visible = false;
@@ -86,8 +97,9 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Location = new System.Drawing.Point(501, 52);
+            this.comboBox1.Location = new System.Drawing.Point(252, 12);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(243, 21);
             this.comboBox1.TabIndex = 7;
@@ -98,7 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 450);
+            this.ClientSize = new System.Drawing.Size(512, 432);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.outputRichBox);
             this.Controls.Add(this.nameTextBox);
@@ -106,7 +118,7 @@
             this.Controls.Add(this.messageTextBox);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Чат";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -121,7 +133,6 @@
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.RichTextBox outputRichBox;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ComboBox comboBox1;
     }
 }

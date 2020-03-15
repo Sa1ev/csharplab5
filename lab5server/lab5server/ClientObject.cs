@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace lab5server
@@ -36,6 +37,7 @@ namespace lab5server
                 message = userName + " вошел в чат. Ip:"+ getIp();
                 // посылаем сообщение о входе в чат всем подключенным пользователям
                 server.BroadcastMessage(message, this.Id);
+                Thread.Sleep(300);
                 server.sendUserList();
                
                     Console.WriteLine(message);
@@ -54,15 +56,15 @@ namespace lab5server
                         String[] splt = message.Split(ServerObject.splitChar);
                         if (splt[0]=="Общий") 
                         {
-                            message = String.Format("{0} отправил: {1}", userName, splt[1]);
+                            message = String.Format("{0} отправил всем: {1}", userName, splt[1]);
                             Console.WriteLine(message);
                             server.BroadcastMessage(message, this.Id);
                         }
                         else if (splt[0] != "")
                         {
-                            message = String.Format("{0} отправил {1} личное сообщение: {2}", userName, splt[0], splt[1]);
+                            message = String.Format("{0} отправил вам лс: {1}", userName, splt[1]);
                             Console.WriteLine(message);
-                            server.PrivateMessage(splt[1], splt[0]);
+                            server.PrivateMessage(message, splt[0]);
                         }
                         
                         

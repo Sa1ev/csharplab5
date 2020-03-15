@@ -23,13 +23,22 @@ namespace lab5client
         private void Form1_Load(object sender, EventArgs e)
         {
             
+            nameTextBox.Text = "Введите свой ник";
+            nameTextBox.ForeColor = Color.Gray;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (messageTextBox.Text != "")
             {
-                outputRichBox.AppendText("Вы отправили: "+messageTextBox.Text+"\n");
+                if (comboBox1.SelectedIndex == 0)
+                {
+                    outputRichBox.AppendText("Вы отправили: " + messageTextBox.Text + "\n");
+                }
+                else
+                {
+                    outputRichBox.AppendText(String.Format("Вы отправили {0} лс: {1}\n", getComboValue(), messageTextBox.Text));
+                }
                 Logic.SendMessage();
             }
             
@@ -37,7 +46,12 @@ namespace lab5client
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Logic.startClient(nameTextBox.Text, this);
+            if (nameTextBox.Text != "" & nameTextBox.Text != "Введите свой ник")
+            {
+                
+                Logic.startClient(nameTextBox.Text, this);
+            }
+            
         }
     
        
@@ -83,8 +97,8 @@ namespace lab5client
             button2.Visible = false;
             outputRichBox.Visible = true;
             button1.Visible = true;
-            nameTextBox.Visible = false;
             comboBox1.Visible = true;
+            nameTextBox.Enabled=false;
         }
 
         public void defaultWindow()
@@ -96,7 +110,6 @@ namespace lab5client
             button2.Visible = true;
             outputRichBox.Visible = false;
             button1.Visible = false;
-            nameTextBox.Visible = true;
             comboBox1.Visible = false;
         }
 
@@ -140,6 +153,24 @@ namespace lab5client
         {
             String cText = this.comboBox1.GetItemText(this.comboBox1.SelectedItem);
             return cText.Split('\n')[0];
+        }
+
+        private void nameTextBox_Enter(object sender, EventArgs e)
+        {
+            if (nameTextBox.Text == "Введите свой ник")
+            {
+                nameTextBox.Text = "";
+                nameTextBox.ForeColor = Color.Black;
+            }
+        }
+
+        private void nameTextBox_Leave(object sender, EventArgs e)
+        {
+            if (nameTextBox.Text == "")
+            {
+                nameTextBox.Text = "Введите свой ник";
+                nameTextBox.ForeColor = Color.Gray;
+            }
         }
     }
 }

@@ -25,6 +25,7 @@ namespace lab5server
             // и удаляем его из списка подключений
             if (client != null)
                 clients.Remove(client);
+            Thread.Sleep(300);
             sendUserList();
         }
         // прослушивание входящих подключений
