@@ -5,3 +5,10 @@ C:\Users\Ssalev\source\repos\lab5server\lab5server\obj\Debug\lab5server.csprojAs
 C:\Users\Ssalev\source\repos\lab5server\lab5server\obj\Debug\lab5server.csproj.CoreCompileInputs.cache
 C:\Users\Ssalev\source\repos\lab5server\lab5server\obj\Debug\lab5server.exe
 C:\Users\Ssalev\source\repos\lab5server\lab5server\obj\Debug\lab5server.pdb
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5server\lab5server\bin\Debug\lab5server.exe.config
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5server\lab5server\bin\Debug\lab5server.exe
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5server\lab5server\bin\Debug\lab5server.pdb
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5server\lab5server\obj\Debug\lab5server.csprojAssemblyReference.cache
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5server\lab5server\obj\Debug\lab5server.csproj.CoreCompileInputs.cache
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5server\lab5server\obj\Debug\lab5server.exe
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5server\lab5server\obj\Debug\lab5server.pdb

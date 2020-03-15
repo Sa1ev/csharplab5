@@ -16,15 +16,13 @@ namespace lab5client
         private const int port = 8888;
         static TcpClient client;
         static NetworkStream stream;
-        static RichTextBox output;
-        static TextBox input;
+        static Form1 form;
 
-        public static void startClient(String userName, RichTextBox output, TextBox input)
+        public static void startClient(String userName, Form1 form)
         {
             {
                 Logic.userName = userName;
-                Logic.output = output;
-                Logic.input = input;
+                Logic.form = form;
                 client = new TcpClient();
                 try
                 {
@@ -55,11 +53,11 @@ namespace lab5client
             }
             while (true)
             {
-                if (input.Text == ""){
+                if (form.getMessage() == ""){
                     return;
                 }
-                byte[] data = Encoding.Unicode.GetBytes(input.Text);
-                input.Text = "";
+                byte[] data = Encoding.Unicode.GetBytes(form.getMessage());
+                form.clearMessage();
                 stream.Write(data, 0, data.Length);
             }
         }
@@ -81,13 +79,18 @@ namespace lab5client
                     while (stream.DataAvailable);
 
                     string message = builder.ToString();
-                    output.AppendText(message+"\n");//вывод сообщения
+                    form.richAddText(message + "\n");
+                        //Console.WriteLine(message + "\n");
+                        //output.AppendText(message + "\n");//вывод сообщения
+                    
+                    
                 }
                 catch
                 {
                     Console.WriteLine("Подключение прервано!"); //соединение было прервано
                     Console.ReadLine();
                     Disconnect();
+                    return;
                 }
             }
         }

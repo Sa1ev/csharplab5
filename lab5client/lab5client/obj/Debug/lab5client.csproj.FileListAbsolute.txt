@@ -8,3 +8,13 @@ C:\Users\Ssalev\source\repos\lab5client\lab5client\obj\Debug\lab5client.csproj.G
 C:\Users\Ssalev\source\repos\lab5client\lab5client\obj\Debug\lab5client.csproj.CoreCompileInputs.cache
 C:\Users\Ssalev\source\repos\lab5client\lab5client\obj\Debug\lab5client.exe
 C:\Users\Ssalev\source\repos\lab5client\lab5client\obj\Debug\lab5client.pdb
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5client\lab5client\bin\Debug\lab5client.exe.config
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5client\lab5client\bin\Debug\lab5client.exe
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5client\lab5client\bin\Debug\lab5client.pdb
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5client\lab5client\obj\Debug\lab5client.csprojAssemblyReference.cache
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5client\lab5client\obj\Debug\lab5client.Form1.resources
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5client\lab5client\obj\Debug\lab5client.Properties.Resources.resources
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5client\lab5client\obj\Debug\lab5client.csproj.GenerateResource.cache
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5client\lab5client\obj\Debug\lab5client.csproj.CoreCompileInputs.cache
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5client\lab5client\obj\Debug\lab5client.exe
+C:\Users\Ssalev\Desktop\Reposes\csharplab5\lab5client\lab5client\obj\Debug\lab5client.pdb
